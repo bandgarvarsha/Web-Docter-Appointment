@@ -1,0 +1,20 @@
+.registrationbox {
+  margin: 10px;
+  position: absolute;
+  margin-left: 35%;
+  width: 350px;
+  height: auto;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 26);
+}
+
+.formactions {
+  display: flex;
+  margin-top: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.submit {
+  margin-left: 11.2rem;
+}

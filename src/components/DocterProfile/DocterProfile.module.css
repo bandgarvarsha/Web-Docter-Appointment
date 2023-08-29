@@ -1,0 +1,52 @@
+.profile-container {
+  /* border: 1px solid red !important; */
+  display: flex !important;
+  flex-direction: row !important;
+  border: none !important;
+}
+
+.cardImg {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 20%;
+  margin-top: 1.5rem;
+}
+
+.profileInfo {
+  margin-left: 2rem;
+  padding: 20px;
+}
+
+.name {
+  color: #414146;
+  font-size: 24px;
+  margin-bottom: 3px;
+}
+
+.address {
+  color: #414146;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.button {
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  padding: 8px 16px;
+
+  background-color: #4682b4;
+  border-radius: 6px;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #265df2;
+}
+
+.speciality {
+  color: #199fd9;
+}
