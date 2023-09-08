@@ -1,10 +1,7 @@
 import React from "react";
 import classes from "../BookAppointment/BookAppointment.module.css";
-import { useNavigate } from "react-router";
 
 const BookAppointment = () => {
-  let navigate = useNavigate();
-
   return (
     <div className={classes.bookingbox}>
       <form>

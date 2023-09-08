@@ -15,6 +15,18 @@
   margin-bottom: 15px;
 }
 
-.submit {
-  margin-left: 11.2rem;
+.register {
+  margin-left: 10rem;
+  width: 5rem;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  background-color: #4682b4;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register:hover {
+  background-color: #265df2;
 }

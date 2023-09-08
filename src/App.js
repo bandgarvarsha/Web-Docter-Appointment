@@ -13,6 +13,8 @@ import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import { Context } from "./components/Context/Context";
 import BookAppointment from "./components/BookAppointment/BookAppointment";
 import DocterProfile from "./components/DocterProfile/DocterProfile";
+import Slots from "./components/Slots";
+import DocterRegistration from "./components/DocterRegistration";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -28,8 +30,14 @@ const App = () => {
           <Route path="forgetPassword" element={<ForgetPassword />}></Route>
           <Route path="bookAppointment" element={<BookAppointment />}></Route>
           <Route path="/docterProfile/:id" element={<DocterProfile />}></Route>
+          <Route path="/edit/:id" element={<Register />}></Route>
+          <Route path="/slots" element={<Slots />}></Route>
+          <Route
+            path="/docterRegistration"
+            element={<DocterRegistration />}
+          ></Route>
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Context.Provider>
     </div>
   );

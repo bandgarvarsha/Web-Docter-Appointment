@@ -8,23 +8,23 @@ export const loginFun = async (email, password) => {
 };
 
 export const fetchDocterList = async () => {
-  let token = sessionStorage.getItem("jwt");
-  return await axios.get("http://localhost:5000/doctorList", {
-    headers: {
-      Authorization: `${token}`,
-    },
-  });
+  return await axios.get("http://localhost:5000/doctorList");
+};
+
+export const fetchAvailableSlots = async () => {
+  return await axios.get("http://localhost:5000/timeSlots");
 };
 
 export const registrationFun = async (
+  id = null,
   fullName,
   address,
   mobileNo,
   emailId,
   password
 ) => {
-  console.log(address);
   return await axios.post("http://localhost:5000/signup", {
+    id,
     fullName,
     address,
     mobileNo,
@@ -35,4 +35,30 @@ export const registrationFun = async (
 
 export const fetchDocterProfile = async (id) => {
   return await axios.get(`http://localhost:5000/docterProfile/${id}`);
+};
+
+export const updateUserProfile = async (id) => {
+  return await axios.get(`http://localhost:5000/updateUserProfile/${id}`);
+};
+
+export const docterRegistrationFun = async (
+  id = null,
+  fullName,
+  education,
+  speciality,
+  address,
+  phoneNumber,
+  experience,
+  information
+) => {
+  return await axios.post("http://localhost:5000/docterRegistration", {
+    id,
+    fullName,
+    education,
+    speciality,
+    address,
+    phoneNumber,
+    experience,
+    information,
+  });
 };
