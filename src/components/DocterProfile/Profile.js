@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import classes from "../DocterProfile/DocterProfile.module.css";
 import { fetchDocterProfile } from "../loginService";
-import DatePicker from "react-datepicker"; // Import the datepicker
-import "react-datepicker/dist/react-datepicker.css"; // Import datepicker styles
 
-const DocterProfile = () => {
+const Profile = () => {
   const [docter, setDocter] = useState();
   const [selectedDate, setSelectedDate] = useState(null);
   const params = useParams();
@@ -27,23 +25,6 @@ const DocterProfile = () => {
     fetchProfile();
   }, [docterId]);
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date); // Update the selected date when the user selects a new date
-  };
-
-  const getSlotsForSelectedDate = () => {
-    if (!docter || !selectedDate) {
-      return [];
-    }
-    const selectedDateStr = selectedDate.toISOString().split("T")[0]; // Convert selectedDate to string format "YYYY-MM-DD"
-
-    const selectedDateData = docter.data.find(
-      (slot) => slot.date === selectedDateStr
-    );
-
-    return selectedDateData ? selectedDateData.slots : [];
-  };
-
   return (
     <div>
       {docter && (
@@ -58,19 +39,12 @@ const DocterProfile = () => {
             />
           </div>
           <div className={classes.profileInfo}>
-            <h2 className={classes.name}>{docter.fullName}</h2>
+            <h2 className={classes.name}>{docter.name}</h2>
             <div>{docter.education}</div>
-            <div className={classes.speciality}>{docter.speciality}</div>
+            <div className={classes.speciality}>{docter.specialty}</div>
             <div>{docter.experience}</div>
             <div className={classes.address}>{docter.address}</div>
-            <div>{docter.information}</div>
-            <DatePicker
-              selected={selectedDate}
-              onChange={handleDateChange}
-              minDate={new Date()} // Set a minimum date if needed
-              placeholderText="Select the date"
-              className={classes.datePicker}
-            />
+            <div>{docter.info}</div>
             <div className="container ">
               <div className="row">
                 <div className="col-lg-8">
@@ -79,23 +53,15 @@ const DocterProfile = () => {
                       {docter.data &&
                         docter.data.map((slot) => (
                           <h5
-                            onClick={() => setSelectedDate(new Date(slot.date))}
+                            onClick={() => setSelectedDate(slot.date)}
                             className={classes.dateContainer}
                           >
-                            {/* {slot.date} */}
+                            {slot.date}
                           </h5>
                         ))}
                     </div>
                     <div className={`col-lg-8 ${classes["m-flex"]}`}>
-                      {selectedDate && (
-                        <div>
-                          {getSlotsForSelectedDate().map((slot) => (
-                            <div className={classes.slots}>{slot.start}</div>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* {docter.data &&
+                      {docter.data &&
                         docter.data.map((slot) => {
                           return (
                             slot.date == selectedDate &&
@@ -104,7 +70,7 @@ const DocterProfile = () => {
                               <div className={classes.slots}>{item.start}</div>
                             ))
                           );
-                        })} */}
+                        })}
                     </div>
                   </div>
                 </div>
@@ -122,4 +88,4 @@ const DocterProfile = () => {
   );
 };
 
-export default DocterProfile;
+export default Profile;

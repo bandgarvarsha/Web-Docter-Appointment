@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { fetchDocterList } from "../loginService";
-import docterpic from "../../assets/d2.jpg";
 import classes from "../DoctorList/DocterList.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,7 +18,6 @@ const Docters = () => {
         let docterList = await fetchDocterList();
 
         setDocters(docterList.data);
-        console.log("docters", docterList.data);
       } catch (err) {
         alert("could not find list");
       }
@@ -61,7 +59,7 @@ const Docters = () => {
                     docter.Specialty.toLowerCase().includes(search);
             })
             .map((docter) => (
-              <div key={docter.id}>
+              <div key={docter._id}>
                 <div className={classes.docter}>
                   <div className={classes.slideContainer}>
                     <div className={classes.slideContent}>
@@ -79,20 +77,20 @@ const Docters = () => {
                           </div>
                           <div className={classes.cardContent}>
                             <Link
-                              to={`docterProfile/ ${docter.id}`}
+                              to={`docterProfile/${docter._id}`}
                               className={classes.name}
                             >
-                              {docter.name}
+                              {docter.fullName}
                             </Link>
                             <h3 className={classes.education}>
-                              {docter.education} - {docter.specialty}
+                              {docter.education} - {docter.speciality}
                             </h3>
                             <h4 className={classes.address}>
                               {docter.address}
                             </h4>
 
                             <h4 className={classes.mobile}>
-                              📞 {docter.mobile}
+                              📞 {docter.phoneNumber}
                             </h4>
                             <button
                               className={classes.button}
